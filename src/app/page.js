@@ -1,101 +1,79 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import Header from '../components/header';
+import Footer from '../components/footer';
+import Hero from '@/components/hero';
+import Blog from '@/components/blog';
+import Ingredients from '@/components/Ingredients';
+import Image from 'next/image';
+
+const info = [
+  {
+    img: '/clinically-studied.png',
+    head: 'Clinically Studied',
+    des: 'All products that we offer have undergone lab and safety tests'
+  },
+  {
+    img: '/veg-friendly.png',
+    head: 'Vegetarian Friendly',
+    des: 'We have a wide selection of vegetarian products to meet your needs'
+  },
+  {
+    img: '/made-in-india.png',
+    head: 'Made in India',
+    des: 'Shop local and explore health products made right here in India'
+  },
+  {
+    img: '/Freeshipping.png',
+    head: 'Free shipping',
+    des: 'We deliver to your door with no shipping costs on your orders'
+  },
+  {
+    img: '/NoRisk.png',
+    head: 'No Risk',
+    des: 'We ensure that all products are safe and within their use-by date'
+  },
+  {
+    img: '/GMOfree.png',
+    head: 'GMO free',
+    des: 'Natural, no modified products and derivatives for those who need it'
+  },
+]
+
+export default function Page() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div className="min-h-screen relative bg-background flex-col text-primary h-full w-full justify-between items-center flex">
+      <div className="h-full flex-col px-10 py-2 w-full flex justify-between items-center overflow-visible relative">
+        <Header />
+        <Hero />
+        <Ingredients />
+        <Blog />
+      </div>
+      <Footer />
+      <div className="flex h-[150vh] sm:h-[110vh] md:h-[90vh] lg:h-[60vh] xl:h-[45vh] absolute top-[110vh] lg:top-[75vh] sm:left-[14%] xl:left-[18%] bg-primary w-[80%] sm:w-[75%] md:w-[80%] lg:w-[800px] xl:w-[850px] rounded-[45px]">
+      </div>
+      <div className="h-auto absolute top-[105vh] lg:top-[70vh] left-[8%] xl:left-[20%] flex flex-col lg:flex-row w-[90%] xl:w-[850px] flex-wrap gap-5 justify-center items-center">
+        {info.map((itm, index) => {
+          return (
+            <div
+              className="flex flex-col justify-center items-center h-[150px] w-[100%] lg:w-[30%] gap-2 text-background"
+              key={index}
+            >
+              <Image
+                src={itm.img}
+                alt={itm.head}
+                height={70}
+                width={70}
+              />
+              <p className="text-center w-full text-sm font-bold">{itm.head}</p>
+              <p className="text-center text-[11px] font-thin w-[70%]">
+                {itm.des}
+              </p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
+
